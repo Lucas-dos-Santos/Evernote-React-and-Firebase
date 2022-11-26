@@ -1,6 +1,10 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { RouterProvider } from 'react-router-dom';
+import Routes from './routes';
+
 function App() {
   return (
-    <div className="App" />
+    <RouterProvider router={Routes} />
   );
 }
 

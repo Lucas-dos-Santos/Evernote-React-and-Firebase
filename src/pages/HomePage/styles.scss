@@ -1,0 +1,36 @@
+.home-container {
+	width: 100%;
+	margin: 0;
+	height: calc(100vh - 70px);
+
+	img {
+		max-height: 70%;
+	}
+
+	.col:first-child {
+		display: flex;
+		flex-direction: column;
+		padding-left: 100px;
+		color: white;
+
+		@media screen and (max-width: 800px) {
+			padding: 20px;
+			text-align: center;
+		}
+
+		div {
+			width: 100%;
+		}
+
+		.btn {
+			width: 60%;
+		}
+	}
+
+	.col {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background-color: #7704d0ea;
+	}
+}
