@@ -4,6 +4,7 @@ import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import Header from '../../componentes/Header';
 import LogoImage from '../../assets/images/logo.png';
+import FormRegister from '../../componentes/FormRegister';
 import './styles.scss';
 
 function RegisterPage() {
@@ -21,6 +22,7 @@ function RegisterPage() {
                 />
               </Card.Title>
               <Card.Text>Your notes on the cloud</Card.Text>
+              <FormRegister />
             </Card.Body>
           </Card>
         </Col>
