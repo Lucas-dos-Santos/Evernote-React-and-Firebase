@@ -1,11 +1,16 @@
 nav.navbar {
-	height: 70px;
 	border-bottom: 1px solid black;
 
 	.navbar-nav {
+		text-align: center;
+
 		.nav-link {
 			color: #7704d0ea;
 			margin-right: 20px;
+
+			@media screen and (max-width: 800px) {
+				margin: 0;
+			}
 		}
 
 		.nav-link:hover {

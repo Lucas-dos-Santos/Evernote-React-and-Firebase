@@ -9,11 +9,11 @@ function FormRegister() {
   return (
     <Container className="form-register">
       <Form>
-        <Form.Group className="mb-3" controlId="formBasicName">
+        <Form.Group className="mb-1" controlId="formBasicName">
           <Form.Label>Name</Form.Label>
           <Form.Control type="text" placeholder="Enter name" />
         </Form.Group>
-        <Form.Group className="mb-3" controlId="formBasicEmail">
+        <Form.Group className="mb-1" controlId="formBasicEmail">
           <Form.Label>Email</Form.Label>
           <Form.Control type="email" placeholder="Enter email" />
         </Form.Group>
@@ -22,7 +22,7 @@ function FormRegister() {
           <Form.Control type="password" placeholder="Password" />
         </Form.Group>
         <div className="buttons">
-          <Link href="/login">Login</Link>
+          <Link href="/login">Login or</Link>
           <Button variant="outline-dark">Register</Button>
         </div>
       </Form>

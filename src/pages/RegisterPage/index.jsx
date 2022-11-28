@@ -12,8 +12,8 @@ function RegisterPage() {
     <>
       <Header />
       <Row className="register-container">
-        <Col md={{ span: 6, offset: 3 }}>
-          <Card style={{ width: '18rem' }}>
+        <Col>
+          <Card>
             <Card.Body>
               <Card.Title>
                 <img
