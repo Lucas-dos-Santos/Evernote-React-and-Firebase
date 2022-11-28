@@ -2,6 +2,28 @@ nav.navbar {
 	height: 70px;
 	border-bottom: 1px solid black;
 
+	.navbar-nav {
+		.nav-link {
+			color: #7704d0ea;
+			margin-right: 20px;
+		}
+
+		.nav-link:hover {
+			opacity: 0.6;
+		}
+
+		.btn {
+			color: #7704d0ea;
+			border-color: #7704d0ea;
+		}
+
+		.btn:hover {
+			color: white;
+			background-color: #7704d0ea;
+		}
+
+	}
+
 	.navbar-brand {
 		img {
 			height: 40px;
