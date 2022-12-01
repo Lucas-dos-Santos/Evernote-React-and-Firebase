@@ -1,8 +1,8 @@
 import React from 'react';
 import Container from 'react-bootstrap/Container';
-import Button from 'react-bootstrap/Button';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import { Link } from 'react-router-dom';
 import LogoImage from '../../assets/images/logo.png';
 import './styles.scss';
 
@@ -10,17 +10,17 @@ function Header() {
   return (
     <Navbar bg="light" expand="lg">
       <Container>
-        <Navbar.Brand href="#home">
+        <Link to="/" className="navbar-brand">
           <img
             src={LogoImage}
             alt="brand-logo"
           />
-        </Navbar.Brand>
+        </Link>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
-            <Nav.Link href="#home">Register</Nav.Link>
-            <Button variant="outline-dark">Login</Button>
+            <Link to="/register" className="nav-link">Register</Link>
+            <Link to="/login" className="btn btn-outline-dark">Login</Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

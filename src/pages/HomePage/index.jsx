@@ -2,7 +2,7 @@ import React from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
-import Header from '../../componentes/Header';
+import Header from '../../components/Header';
 import PresentationImage from '../../assets/images/presentation.png';
 import './styles.scss';
 
