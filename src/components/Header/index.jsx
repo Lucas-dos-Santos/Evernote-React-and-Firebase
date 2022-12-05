@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom';
+import UserGlobalContext from '../../context/user/context';
 import LogoImage from '../../assets/images/logo.png';
 import './styles.scss';
 
 function Header() {
+  const { state } = useContext(UserGlobalContext);
+
   return (
     <Navbar bg="light" expand="lg">
       <Container>

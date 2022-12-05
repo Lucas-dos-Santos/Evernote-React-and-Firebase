@@ -4,12 +4,11 @@ import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import UserContext from '../../context/user/context';
 import { auth } from '../../firebase/firebase.utils';
+import UserContext from '../../context/user/context';
 import './styles.scss';
 
-function FormRegister() {
-  const [name, setName] = useState();
+function FormLogin() {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const navigate = useNavigate();
@@ -36,16 +35,6 @@ function FormRegister() {
   return (
     <Container className="form-register">
       <Form onSubmit={handleSubmit}>
-        <Form.Group className="mb-1" controlId="formBasicName">
-          <Form.Label>Name</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Enter name"
-            name={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-          />
-        </Form.Group>
         <Form.Group className="mb-1" controlId="formBasicEmail">
           <Form.Label>Email</Form.Label>
           <Form.Control
@@ -67,12 +56,12 @@ function FormRegister() {
           />
         </Form.Group>
         <div className="buttons">
-          <Link to="/login">Login or</Link>
-          <Button type="submit" variant="outline-dark">Register</Button>
+          <Link to="/register">Register or</Link>
+          <Button type="submit" variant="outline-dark">Login</Button>
         </div>
       </Form>
     </Container>
   );
 }
 
-export default FormRegister;
+export default FormLogin;
