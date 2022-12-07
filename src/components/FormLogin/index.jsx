@@ -5,7 +5,7 @@ import Container from 'react-bootstrap/Container';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { auth } from '../../firebase/firebase.utils';
-import UserContext from '../../context/user/context';
+import UserContext from '../../contexts/user';
 import './styles.scss';
 
 function FormLogin() {
@@ -13,7 +13,7 @@ function FormLogin() {
   const [password, setPassword] = useState();
   const navigate = useNavigate();
 
-  const { setState: setGlobalState } = useContext(UserContext);
+  const { setUser: setGlobalState } = useContext(UserContext);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

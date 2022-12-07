@@ -1,5 +1,5 @@
 import React from 'react';
-import { UserContextProvider } from './user/context';
+import { UserContextProvider } from './user';
 
 function GlobalContext({ children }) {
   return <UserContextProvider>{children}</UserContextProvider>;

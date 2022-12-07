@@ -1,8 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-toastify/dist/ReactToastify.css';
-import { RouterProvider } from 'react-router-dom';
 import Toast from './components/Toast';
-import GlobalContext from './context';
+import GlobalContext from './contexts';
 import Routes from './routes';
 
 function App() {
@@ -10,7 +9,7 @@ function App() {
     <>
       <Toast />
       <GlobalContext>
-        <RouterProvider router={Routes} />
+        <Routes />
       </GlobalContext>
     </>
   );

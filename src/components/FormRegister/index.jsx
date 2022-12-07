@@ -4,7 +4,7 @@ import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import UserContext from '../../context/user/context';
+import UserContext from '../../contexts/user';
 import { auth } from '../../firebase/firebase.utils';
 import './styles.scss';
 
@@ -14,15 +14,16 @@ function FormRegister() {
   const [password, setPassword] = useState();
   const navigate = useNavigate();
 
-  const { setState: setGlobalState } = useContext(UserContext);
+  const { setUser: setGlobalState } = useContext(UserContext);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const resp = await auth.createUserWithEmailAndPassword(email, password);
       const { uid } = resp.user;
-      setGlobalState({ uid, email });
       navigate('/');
+      setGlobalState({ uid, email });
+      sessionStorage.setItem('user', JSON.stringify({ uid, email }));
       toast.success('Login efetuado com sucesso!');
     } catch (err) {
       if (err.code === 'auth/email-already-in-use') {
