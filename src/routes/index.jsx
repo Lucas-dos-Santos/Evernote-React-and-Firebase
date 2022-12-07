@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
 import { RouterProvider } from 'react-router-dom';
-import commonRoutes from './commonRoutes';
+import publicRoutes from './publicRoutes';
 import UserGlobalContext from '../contexts/user';
-import signRoutes from './signRoutes';
+import privateRoutes from './privateRoutes';
 
 function Routes() {
   const { user } = useContext(UserGlobalContext);
-  const routes = user.uid ? signRoutes : commonRoutes;
+  const routes = user.uid ? privateRoutes : publicRoutes;
 
   return (
     <RouterProvider router={routes} />

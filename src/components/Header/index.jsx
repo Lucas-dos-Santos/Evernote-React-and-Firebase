@@ -36,7 +36,6 @@ function Header() {
                   <Link to="/login" className="btn btn-outline-dark">Login</Link>
                 </>
               )}
-
           </Nav>
         </Navbar.Collapse>
       </Container>
