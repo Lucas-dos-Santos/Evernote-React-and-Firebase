@@ -12,9 +12,7 @@ function FormLogin() {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const navigate = useNavigate();
-  const { user } = useContext(UserContext);
   const { setUser } = useContext(UserContext);
-  if (user.uid) { return navigate('/notes'); }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -23,7 +21,7 @@ function FormLogin() {
       const { uid } = resp.user;
       setUser({ uid, email });
       sessionStorage.setItem('user', JSON.stringify({ uid, email }));
-      navigate('/');
+      navigate('/notes');
       toast.success('Login efetuado com sucesso!');
     } catch (err) {
       toast.error('Email ou senha inválido!');

@@ -1,16 +1,19 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import PrivateRoutes from './privateRoutes';
+import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom';
+import { useContext } from 'react';
 import HomePage from '../pages/HomePage';
 import NotesPage from '../pages/NotesPage';
 import LoginPage from '../pages/LoginPage';
 import RegisterPage from '../pages/RegisterPage';
+import UserContext from '../contexts/user';
 
 function Routes() {
+  const { user } = useContext(UserContext);
+
   const routes = createBrowserRouter([
     { path: '/', element: <HomePage /> },
-    { path: '/notes', element: <PrivateRoutes><NotesPage /></PrivateRoutes> },
-    { path: '/login', element: <LoginPage /> },
-    { path: '/register', element: <RegisterPage /> },
+    { path: '/notes', element: !user.uid ? <Navigate to="/login" /> : <NotesPage /> },
+    { path: '/login', element: user.uid ? <Navigate to="/notes" /> : <LoginPage /> },
+    { path: '/register', element: user.uid ? <Navigate to="/notes" /> : <RegisterPage /> },
 
   ]);
 

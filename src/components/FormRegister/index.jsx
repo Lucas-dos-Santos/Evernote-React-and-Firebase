@@ -12,9 +12,7 @@ function FormRegister() {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const navigate = useNavigate();
-  const { user } = useContext(UserContext);
   const { setUser } = useContext(UserContext);
-  if (user.uid) { return navigate('/notes'); }
 
   const handleSubmit = async (e) => {
     e.preventDefault();

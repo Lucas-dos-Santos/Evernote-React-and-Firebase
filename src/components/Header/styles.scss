@@ -26,7 +26,6 @@ nav.navbar {
 			color: white;
 			background-color: #7704d0ea;
 		}
-
 	}
 
 	.navbar-brand {
@@ -37,9 +36,27 @@ nav.navbar {
 }
 
 .navbar-logged {
+	background-color: #7704d0ea !important;
+
 	.email {
 		display: flex;
 		align-items: center;
+		color: white;
 		justify-content: center;
+		opacity: 0.7;
+	}
+
+	.nav-link {
+		color: white !important;
+	}
+
+	.btn {
+		color: white !important;
+		border-color: white !important;
+	}
+
+	.btn:hover {
+		color: #7704d0ea !important;
+		background-color: white !important;
 	}
 }
