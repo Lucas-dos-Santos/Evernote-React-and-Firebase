@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { auth } from '../../firebase/firebase.utils';
 import UserContext from '../../contexts/user';
@@ -14,7 +14,7 @@ function FormLogin() {
   const navigate = useNavigate();
   const { user } = useContext(UserContext);
   const { setUser } = useContext(UserContext);
-  if (user.uid) { return <Navigate to="/notes" />; }
+  if (user.uid) { return navigate('/notes'); }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
