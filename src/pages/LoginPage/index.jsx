@@ -7,7 +7,7 @@ import LogoImage from '../../assets/images/logo.png';
 import FormLogin from '../../components/FormLogin';
 import './styles.scss';
 
-function RegisterPage() {
+function LoginPage() {
   return (
     <>
       <Header />
@@ -31,4 +31,4 @@ function RegisterPage() {
   );
 }
 
-export default RegisterPage;
+export default LoginPage;

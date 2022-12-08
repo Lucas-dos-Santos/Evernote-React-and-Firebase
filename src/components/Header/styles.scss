@@ -35,3 +35,11 @@ nav.navbar {
 		}
 	}
 }
+
+.navbar-logged {
+	.email {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+}

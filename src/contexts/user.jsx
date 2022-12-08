@@ -2,17 +2,10 @@ import React, {
   createContext, useState, useMemo, useEffect,
 } from 'react';
 
-const DEFAULT_VALUES = {
-  user: {
-    uid: '',
-    email: '',
-  },
-};
-
-const UserContext = createContext(DEFAULT_VALUES);
+const UserContext = createContext({ user: {} });
 
 export function UserContextProvider({ children }) {
-  const [user, setUser] = useState(DEFAULT_VALUES.user);
+  const [user, setUser] = useState({});
 
   const value = useMemo(() => ({
     user, setUser,

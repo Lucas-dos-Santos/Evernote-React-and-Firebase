@@ -1,16 +1,16 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-toastify/dist/ReactToastify.css';
 import Toast from './components/Toast';
-import GlobalContext from './contexts';
+import { UserContextProvider } from './contexts/user';
 import Routes from './routes';
 
 function App() {
   return (
     <>
       <Toast />
-      <GlobalContext>
+      <UserContextProvider>
         <Routes />
-      </GlobalContext>
+      </UserContextProvider>
     </>
   );
 }

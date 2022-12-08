@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { auth } from '../../firebase/firebase.utils';
 import UserContext from '../../contexts/user';
@@ -12,23 +12,21 @@ function FormLogin() {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const navigate = useNavigate();
-
-  const { setUser: setGlobalState } = useContext(UserContext);
+  const { user } = useContext(UserContext);
+  const { setUser } = useContext(UserContext);
+  if (user.uid) { return <Navigate to="/notes" />; }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const resp = await auth.createUserWithEmailAndPassword(email, password);
+      const resp = await auth.signInWithEmailAndPassword(email, password);
       const { uid } = resp.user;
-      setGlobalState({ uid, email });
+      setUser({ uid, email });
+      sessionStorage.setItem('user', JSON.stringify({ uid, email }));
       navigate('/');
       toast.success('Login efetuado com sucesso!');
     } catch (err) {
-      if (err.code === 'auth/email-already-in-use') {
-        toast.error('O email já está em uso!');
-      } else {
-        toast.error('Email Inválido!');
-      }
+      toast.error('Email ou senha inválido!');
     }
   };
 

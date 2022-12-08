@@ -1,12 +1,13 @@
-import { createBrowserRouter } from 'react-router-dom';
-import HomePage from '../pages/HomePage';
-import NotesPage from '../pages/NotesPage';
-import EditUserPage from '../pages/EditUserPage';
+import React, { useContext } from 'react';
+import { Navigate } from 'react-router-dom';
+import UserGlobalContext from '../contexts/user';
 
-const signRoutes = createBrowserRouter([
-  { path: '/', element: <HomePage /> },
-  { path: '/users/edit', element: <EditUserPage /> },
-  { path: '/notes', element: <NotesPage /> },
-]);
+function PrivateRoutes({ children }) {
+  const { user } = useContext(UserGlobalContext);
 
-export default signRoutes;
+  if (!user.uid) { return <Navigate to="/login" />; }
+
+  return children;
+}
+
+export default PrivateRoutes;
