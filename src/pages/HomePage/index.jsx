@@ -1,7 +1,7 @@
 import React from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Button from 'react-bootstrap/Button';
+import { Link } from 'react-router-dom';
 import Header from '../../components/Header';
 import PresentationImage from '../../assets/images/presentation.png';
 import './styles.scss';
@@ -23,9 +23,7 @@ function HomePage() {
             Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print.
           </p>
           <div>
-            <Button variant="outline-light">
-              Register for free Now
-            </Button>
+            <Link to="/register" className="btn btn-outline-light">Register for free Now</Link>
           </div>
         </Col>
         <Col>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { push as Menu } from 'react-burger-menu';
 
 function Note({ title, body }) {
   return (

@@ -43,8 +43,7 @@ function Header() {
             {user.uid
               ? (
                 <>
-                  <div className="email me-3">{user.uid && user.email}</div>
-                  <Link to="/notes" className="nav-link">My Notes</Link>
+                  <div className="email">{user.uid && user.email}</div>
                   <Button className="btn" variant="outline-dark" onClick={handleLogout}>Logout</Button>
                 </>
               )

@@ -10,7 +10,7 @@ function Routes() {
   const { user } = useContext(UserContext);
 
   const routes = createBrowserRouter([
-    { path: '/', element: <HomePage /> },
+    { path: '/', element: user.uid ? <Navigate to="/notes" /> : <HomePage /> },
     { path: '/notes', element: !user.uid ? <Navigate to="/login" /> : <NotesPage /> },
     { path: '/login', element: user.uid ? <Navigate to="/notes" /> : <LoginPage /> },
     { path: '/register', element: user.uid ? <Navigate to="/notes" /> : <RegisterPage /> },
