@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import { push as Menu } from 'react-burger-menu';
-import { firestore } from '../../firebase/firebase.utils';
+import { firestore } from 'services/firebase.utils';
 import ListNotes from './ListNotes';
 import './styles.scss';
 

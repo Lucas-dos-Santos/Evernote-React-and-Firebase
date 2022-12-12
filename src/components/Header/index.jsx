@@ -6,9 +6,9 @@ import Navbar from 'react-bootstrap/Navbar';
 import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faList } from '@fortawesome/free-solid-svg-icons';
-import UserContext from '../../contexts/user';
-import LogoImage from '../../assets/images/logo.png';
-import WhiteImage from '../../assets/images/logo-white.png';
+import UserContext from 'contexts/user';
+import LogoImage from 'assets/images/logo.png';
+import WhiteImage from 'assets/images/logo-white.png';
 import './styles.scss';
 
 function Header({ setIsOpen, isOpen }) {

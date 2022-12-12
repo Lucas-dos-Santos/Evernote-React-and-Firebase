@@ -2,8 +2,8 @@ import React from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { Link } from 'react-router-dom';
-import Header from '../../components/Header';
-import PresentationImage from '../../assets/images/presentation.png';
+import Header from 'components/Header';
+import PresentationImage from 'assets/images/presentation.png';
 import './styles.scss';
 
 function HomePage() {

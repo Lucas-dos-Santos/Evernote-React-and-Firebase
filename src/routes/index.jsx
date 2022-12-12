@@ -1,10 +1,10 @@
 import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom';
 import { useContext } from 'react';
-import HomePage from '../pages/HomePage';
-import NotesPage from '../pages/NotesPage';
-import LoginPage from '../pages/LoginPage';
-import RegisterPage from '../pages/RegisterPage';
-import UserContext from '../contexts/user';
+import HomePage from 'pages/HomePage';
+import NotesPage from 'pages/NotesPage';
+import LoginPage from 'pages/LoginPage';
+import RegisterPage from 'pages/RegisterPage';
+import UserContext from 'contexts/user';
 
 function Routes() {
   const { user } = useContext(UserContext);

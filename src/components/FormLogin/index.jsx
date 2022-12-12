@@ -4,8 +4,8 @@ import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { auth } from '../../firebase/firebase.utils';
-import UserContext from '../../contexts/user';
+import { auth } from 'services/firebase.utils';
+import UserContext from 'contexts/user';
 import './styles.scss';
 
 function FormLogin() {
