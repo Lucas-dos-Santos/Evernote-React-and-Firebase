@@ -24,7 +24,7 @@ function Header({ setIsOpen, isOpen }) {
   return (
     <Navbar bg="light" expand="lg" className={user.uid && 'navbar-logged'}>
       <Container>
-        <Link to="/" className="navbar-brand">
+        <Link to={user.uid ? '/notes' : '/'} className="navbar-brand">
           <img
             src={user.uid ? WhiteImage : LogoImage}
             alt="brand-logo"
