@@ -1,5 +1,4 @@
 nav.navbar {
-	border-bottom: 1px solid black;
 	height: 60px;
 
 	@media screen and (max-width: 800px) {
@@ -42,6 +41,12 @@ nav.navbar {
 
 .navbar-logged {
 	background-color: #7704d0ea !important;
+
+	.container {
+		margin-left: 10px !important;
+		margin-right: 10px !important;
+		max-width: 100%;
+	}
 
 	.navbar-toggler {
 		border: 1px solid white;

@@ -4,12 +4,14 @@ import Button from 'react-bootstrap/Button';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Link, useNavigate } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faList } from '@fortawesome/free-solid-svg-icons';
 import UserContext from '../../contexts/user';
 import LogoImage from '../../assets/images/logo.png';
 import WhiteImage from '../../assets/images/logo-white.png';
 import './styles.scss';
 
-function Header() {
+function Header({ setIsOpen, isOpen }) {
   const { user, setUser } = useContext(UserContext);
   const navigate = useNavigate();
 
@@ -23,20 +25,16 @@ function Header() {
     <Navbar bg="light" expand="lg" className={user.uid && 'navbar-logged'}>
       <Container>
         <Link to="/" className="navbar-brand">
-          {user.uid
-            ? (
-              <img
-                src={WhiteImage}
-                alt="brand-logo"
-              />
-            )
-            : (
-              <img
-                src={LogoImage}
-                alt="brand-logo"
-              />
-            )}
+          <img
+            src={user.uid ? WhiteImage : LogoImage}
+            alt="brand-logo"
+          />
         </Link>
+        {user.uid && (
+        <Button variant="outline-dark" onClick={() => setIsOpen(!isOpen)}>
+          <FontAwesomeIcon icon={faList} />
+        </Button>
+        )}
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">

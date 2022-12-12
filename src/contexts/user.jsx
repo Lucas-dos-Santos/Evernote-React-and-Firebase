@@ -13,7 +13,7 @@ export function UserContextProvider({ children }) {
 
   useEffect(() => {
     const storagedUser = sessionStorage.getItem('user');
-    if (storagedUser) { setUser(JSON.parse(storagedUser)); }
+    if (storagedUser && storagedUser !== 'null') { setUser(JSON.parse(storagedUser)); }
   }, []);
 
   return (
