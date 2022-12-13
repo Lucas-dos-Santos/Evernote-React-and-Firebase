@@ -72,16 +72,21 @@ nav.navbar {
 	}
 
 	.nav-link {
-		color: white !important;
+		color: #fff !important;
 	}
 
 	.btn {
-		color: white !important;
-		border-color: white !important;
+		color: #fff !important;
+		border-color: #fff !important;
 	}
 
 	.btn:hover {
 		color: #7704d0ea !important;
-		background-color: white !important;
+		background-color: #fff !important;
+	}
+
+	.btn.active {
+		background-color: #fff;
+		color: #333 !important;
 	}
 }

@@ -8,7 +8,11 @@ import './styles.scss';
 
 function Notes({ setIsOpen, isOpen }) {
   const [notes, setNotes] = useState([]);
-  const [currentNote, setCurrentNote] = useState({ title: '', body: '', id: '' });
+  const [currentNote, setCurrentNote] = useState({
+    title: '',
+    body: '',
+    id: '',
+  });
 
   const getNotes = async () => {
     const collection = await firestore.collection('notes').get();
@@ -18,7 +22,18 @@ function Notes({ setIsOpen, isOpen }) {
       obj.id = doc.id;
       data.push(obj);
     });
-    setNotes(data);
+    if (data.length >= 1) {
+      setNotes(data.reverse());
+      setCurrentNote(data[0]);
+    }
+  };
+
+  const createNote = async () => {
+    await firestore.collection('notes').add({
+      title: 'Nova nota',
+      body: 'Novo body',
+    });
+    getNotes();
   };
 
   useEffect(() => {
@@ -44,6 +59,7 @@ function Notes({ setIsOpen, isOpen }) {
         <ListNotes
           notes={notes}
           selectNote={selectNote}
+          createNote={createNote}
           currentNote={currentNote}
         />
       </Menu>

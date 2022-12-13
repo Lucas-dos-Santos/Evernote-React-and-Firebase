@@ -1,0 +1,27 @@
+.cards-notes {
+	border-radius: 0;
+	background-color: rgba(211, 211, 211, 0.552);
+	border: none;
+}
+
+.cards-notes.active {
+	background-color: lightgray;
+}
+
+.new-note {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin: 10px 0;
+
+	.btn {
+		color: #7704d0ea !important;
+		border-color: #7704d0ea !important;
+	}
+
+	.btn:hover {
+		color: #fff !important;
+		background-color: #7704d0ea !important;
+	}
+}
+

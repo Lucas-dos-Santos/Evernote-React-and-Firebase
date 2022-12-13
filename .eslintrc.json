@@ -24,7 +24,8 @@
 			"react/prop-types": "off",
 			"max-len": "off",
 			"react/react-in-jsx-scope": "off",
-			"react/self-closing-comp": "warn"
+			"react/self-closing-comp": "warn",
+			"object-curly-newline": "off"
     },
 		"settings": {
 			"react": {

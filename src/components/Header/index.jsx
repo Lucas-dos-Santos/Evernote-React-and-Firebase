@@ -25,32 +25,37 @@ function Header({ setIsOpen, isOpen }) {
     <Navbar bg="light" expand="lg" className={user.uid && 'navbar-logged'}>
       <Container>
         <Link to={user.uid ? '/notes' : '/'} className="navbar-brand">
-          <img
-            src={user.uid ? WhiteImage : LogoImage}
-            alt="brand-logo"
-          />
+          <img src={user.uid ? WhiteImage : LogoImage} alt="brand-logo" />
         </Link>
         {user.uid && (
-        <Button variant="outline-dark" onClick={() => setIsOpen(!isOpen)}>
-          <FontAwesomeIcon icon={faList} />
-        </Button>
+          <Button
+            variant="outline-dark"
+            className={isOpen ? 'active' : ''}
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            <FontAwesomeIcon icon={faList} />
+          </Button>
         )}
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
-            {user.uid
-              ? (
-                <>
-                  <div className="email">{user.uid && user.email}</div>
-                  <Button className="btn" variant="outline-dark" onClick={handleLogout}>Logout</Button>
-                </>
-              )
-              : (
-                <>
-                  <Link to="/register" className="nav-link">Register</Link>
-                  <Link to="/login" className="btn btn-outline-dark">Login</Link>
-                </>
-              )}
+            {user.uid ? (
+              <>
+                <div className="email">{user.uid && user.email}</div>
+                <Button variant="outline-dark" onClick={handleLogout}>
+                  Logout
+                </Button>
+              </>
+            ) : (
+              <>
+                <Link to="/register" className="nav-link">
+                  Register
+                </Link>
+                <Link to="/login" className="btn btn-outline-dark">
+                  Login
+                </Link>
+              </>
+            )}
           </Nav>
         </Navbar.Collapse>
       </Container>
