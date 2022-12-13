@@ -2,3 +2,15 @@
   background: white;
   padding-top: 10px;
 }
+
+.notes {
+	margin-right: 0;
+}
+
+.notes-editor {
+	padding: 0;
+
+	.quill {
+		height: calc(100vh - 120px);
+	}
+}

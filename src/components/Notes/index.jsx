@@ -2,37 +2,30 @@ import React, { useState, useEffect } from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import { push as Menu } from 'react-burger-menu';
-import { firestore } from 'services/firebase.utils';
+import NotesUtils from 'services/notes.utils';
+import Editor from 'components/Editor';
 import ListNotes from './ListNotes';
 import './styles.scss';
 
 function Notes({ setIsOpen, isOpen }) {
   const [notes, setNotes] = useState([]);
-  const [currentNote, setCurrentNote] = useState({
-    title: '',
-    body: '',
-    id: '',
-  });
+  const [currentNote, setCurrentNote] = useState({});
 
   const getNotes = async () => {
-    const collection = await firestore.collection('notes').get();
-    const data = [];
-    collection.forEach((doc) => {
-      const obj = doc.data();
-      obj.id = doc.id;
-      data.push(obj);
-    });
+    const data = await NotesUtils.index();
+    setNotes(data);
     if (data.length >= 1) {
-      setNotes(data.reverse());
       setCurrentNote(data[0]);
     }
   };
 
-  const createNote = async () => {
-    await firestore.collection('notes').add({
-      title: 'Nova nota',
-      body: 'Novo body',
-    });
+  const createNote = () => {
+    NotesUtils.create();
+    getNotes();
+  };
+
+  const deleteNote = (id) => {
+    NotesUtils.delete(id);
     getNotes();
   };
 
@@ -61,10 +54,11 @@ function Notes({ setIsOpen, isOpen }) {
           selectNote={selectNote}
           createNote={createNote}
           currentNote={currentNote}
+          deleteNote={deleteNote}
         />
       </Menu>
       <Container className="notes-editor" id="notes-editor">
-        Editor...
+        <Editor />
       </Container>
     </Row>
   );

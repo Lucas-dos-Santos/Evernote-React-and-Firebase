@@ -5,12 +5,12 @@ import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 import Moment from 'moment';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCirclePlus } from '@fortawesome/free-solid-svg-icons';
+import { faCirclePlus, faTrash } from '@fortawesome/free-solid-svg-icons';
 import './styles.scss';
 
-function ListNotes({ notes, selectNote, currentNote, createNote }) {
+function ListNotes({ notes, selectNote, currentNote, createNote, deleteNote }) {
   return (
-    <div>
+    <div style={{ marginBottom: '20px' }}>
       <Container>Search...</Container>
       <Container className="new-note">
         {notes.length}
@@ -35,10 +35,21 @@ function ListNotes({ notes, selectNote, currentNote, createNote }) {
             <Card.Text>
               {item.body.replace(/(<([^>]+)>)/gi, '').substring(0, 30)}
             </Card.Text>
-            <Badge bg="dark">{Moment(item.created_at).format('DD/MM')}</Badge>
+            <div className="footer-card">
+              <Badge>
+                {Moment(item.createdAt.toDate()).format('DD/MM - h:mm')}
+              </Badge>
+              <FontAwesomeIcon
+                icon={faTrash}
+                onClick={() => deleteNote(item.id)}
+                color="gray"
+              />
+            </div>
           </Card.Body>
         </Card>
       ))}
+      <br />
+      <br />
     </div>
   );
 }
