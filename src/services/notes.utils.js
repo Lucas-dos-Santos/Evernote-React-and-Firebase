@@ -13,7 +13,7 @@ const NotesUtils = {
     });
   },
 
-  async index() {
+  async getAll() {
     const data = [];
     const collection = await firestore
       .collection('notes')
@@ -25,6 +25,23 @@ const NotesUtils = {
       data.push(obj);
     });
     return data;
+  },
+
+  async getOne(id) {
+    const documentRef = await firestore.collection('notes').doc(id).get();
+    const note = documentRef.data();
+    note.id = documentRef.id;
+    return note;
+  },
+
+  async update(note, body) {
+    const title = body.replace(/(<([^>]+)>)/gi, '').slice(0, 30);
+    await firestore
+      .collection('notes')
+      .doc(note.id)
+      .set({ title, body }, { merge: true });
+    const newNote = this.getOne(note.id);
+    return newNote;
   },
 };
 

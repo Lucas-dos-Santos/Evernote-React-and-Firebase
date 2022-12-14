@@ -12,7 +12,7 @@ function Notes({ setIsOpen, isOpen }) {
   const [currentNote, setCurrentNote] = useState({});
 
   const getNotes = async () => {
-    const data = await NotesUtils.index();
+    const data = await NotesUtils.getAll();
     setNotes(data);
     if (data.length >= 1) {
       setCurrentNote(data[0]);
@@ -27,6 +27,16 @@ function Notes({ setIsOpen, isOpen }) {
   const deleteNote = (id) => {
     NotesUtils.delete(id);
     getNotes();
+  };
+
+  const updateNote = async (content) => {
+    const oldNote = currentNote;
+    const updatedNote = await NotesUtils.update(currentNote, content);
+
+    const newNotes = notes;
+    newNotes[notes.indexOf(oldNote)] = updatedNote;
+    setNotes(newNotes);
+    setCurrentNote(updatedNote);
   };
 
   useEffect(() => {
@@ -58,7 +68,7 @@ function Notes({ setIsOpen, isOpen }) {
         />
       </Menu>
       <Container className="notes-editor" id="notes-editor">
-        <Editor />
+        <Editor note={currentNote} updateNote={updateNote} />
       </Container>
     </Row>
   );

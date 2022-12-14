@@ -3,7 +3,7 @@ import Header from 'components/Header';
 import Notes from 'components/Notes';
 
 function NotesPage() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
 
   return (
     <>
