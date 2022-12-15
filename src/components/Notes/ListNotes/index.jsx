@@ -1,17 +1,30 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Card from 'react-bootstrap/Card';
 import Badge from 'react-bootstrap/Badge';
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
+import Search from 'components/Search';
 import Moment from 'moment';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCirclePlus, faTrash } from '@fortawesome/free-solid-svg-icons';
 import './styles.scss';
 
 function ListNotes({ notes, selectNote, currentNote, createNote, deleteNote }) {
+  const [filteredNotes, setFilteredNotes] = useState([]);
+
+  useEffect(() => {
+    setFilteredNotes(notes);
+  }, [notes]);
+
+  const handleChange = (e) => {
+    // prettier-ignore
+    const filtereds = notes.filter((n) => n.title.toLowerCase().includes(e.target.value.toLowerCase()));
+    setFilteredNotes(filtereds);
+  };
+
   return (
     <div style={{ marginBottom: '20px' }}>
-      <Container>Search...</Container>
+      <Search handleChange={handleChange} />
       <Container className="new-note">
         {notes.length}
         {' Notes'}
@@ -20,7 +33,7 @@ function ListNotes({ notes, selectNote, currentNote, createNote, deleteNote }) {
           <FontAwesomeIcon icon={faCirclePlus} />
         </Button>
       </Container>
-      {notes.map((item) => (
+      {filteredNotes.map((item) => (
         <Card
           className={`cards-notes ${
             item.id === currentNote.id ? 'active' : ''
