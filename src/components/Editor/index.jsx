@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import ReactQuill from 'react-quill';
+import './styles.scss';
 import 'react-quill/dist/quill.snow.css';
+import ReactLoading from 'react-loading';
 
 function Editor({ note, updateNote }) {
   const [currentContent, setCurrentContent] = useState('');
+  const [saving, setSaving] = useState(false);
   const [timer, setTimer] = useState(null);
 
   useEffect(() => {
@@ -14,7 +17,12 @@ function Editor({ note, updateNote }) {
     clearTimeout(timer);
     if (source === 'user') {
       setCurrentContent(content);
-      setTimer(setTimeout(() => updateNote(content), 5000));
+      // prettier-ignore
+      setTimer(setTimeout(() => {
+        setSaving(true);
+        updateNote(content);
+        setTimeout(() => setSaving(false), 1500);
+      }, 2500));
     }
   };
 
@@ -36,11 +44,18 @@ function Editor({ note, updateNote }) {
   };
 
   return (
-    <ReactQuill
-      value={currentContent}
-      modules={modules}
-      onChange={handleChange}
-    />
+    <>
+      {saving && (
+        <div className="saving">
+          <ReactLoading type="spin" color="green" height={26} width={26} />
+        </div>
+      )}
+      <ReactQuill
+        value={currentContent}
+        modules={modules}
+        onChange={handleChange}
+      />
+    </>
   );
 }
 

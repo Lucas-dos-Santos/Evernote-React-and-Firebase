@@ -5,18 +5,20 @@ const NotesUtils = {
     await firestore.collection('notes').doc(id).delete();
   },
 
-  async create() {
+  async create(uid) {
     await firestore.collection('notes').add({
       title: 'New note',
       body: 'Content',
       createdAt: new Date(),
+      uid,
     });
   },
 
-  async getAll() {
+  async getAll(uid) {
     const data = [];
     const collection = await firestore
       .collection('notes')
+      .where('uid', '==', uid)
       .orderBy('createdAt', 'desc')
       .get();
     collection.forEach((doc) => {

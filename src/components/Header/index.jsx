@@ -24,18 +24,20 @@ function Header({ setIsOpen, isOpen }) {
   return (
     <Navbar bg="light" expand="lg" className={user.uid && 'navbar-logged'}>
       <Container>
-        <Link to={user.uid ? '/notes' : '/'} className="navbar-brand">
-          <img src={user.uid ? WhiteImage : LogoImage} alt="brand-logo" />
-        </Link>
-        {user.uid && (
-          <Button
-            variant="outline-dark"
-            className={isOpen ? 'active' : ''}
-            onClick={() => setIsOpen(!isOpen)}
-          >
-            <FontAwesomeIcon icon={faList} />
-          </Button>
-        )}
+        <div>
+          <Link to={user.uid ? '/notes' : '/'} className="navbar-brand">
+            <img src={user.uid ? WhiteImage : LogoImage} alt="brand-logo" />
+          </Link>
+          {user.uid && (
+            <Button
+              variant="outline-dark"
+              className={isOpen ? 'active' : ''}
+              onClick={() => setIsOpen(!isOpen)}
+            >
+              <FontAwesomeIcon icon={faList} />
+            </Button>
+          )}
+        </div>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">

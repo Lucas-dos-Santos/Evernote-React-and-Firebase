@@ -1,18 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import { push as Menu } from 'react-burger-menu';
 import NotesUtils from 'services/notes.utils';
 import Editor from 'components/Editor';
+import UserContext from 'contexts/user';
 import ListNotes from './ListNotes';
 import './styles.scss';
 
 function Notes({ setIsOpen, isOpen }) {
   const [notes, setNotes] = useState([]);
   const [currentNote, setCurrentNote] = useState({});
+  const { user } = useContext(UserContext);
 
   const getNotes = async () => {
-    const data = await NotesUtils.getAll();
+    const data = await NotesUtils.getAll(user.uid);
     setNotes(data);
     if (data.length >= 1) {
       setCurrentNote(data[0]);
@@ -20,7 +22,7 @@ function Notes({ setIsOpen, isOpen }) {
   };
 
   const createNote = () => {
-    NotesUtils.create();
+    NotesUtils.create(user.uid);
     getNotes();
   };
 
