@@ -1,15 +1,16 @@
 import React from 'react';
-import Container from 'react-bootstrap/Container';
+import Form from 'react-bootstrap/Form';
 
 function Search({ handleChange }) {
   return (
-    <Container>
-      <input
+    <Form.Group>
+      <Form.Control
+        className="mb-3 border-0"
         type="search"
         placeholder="Search note..."
         onChange={handleChange}
       />
-    </Container>
+    </Form.Group>
   );
 }
 
